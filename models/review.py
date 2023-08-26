@@ -1,9 +1,22 @@
 class Review:
-    def __init__(self, name):
+    reviews = []
+    def __init__(self, customer, restaurant, rating):
         """
-        Initializes name, as a string
+        initializes customer, restaurant, and a rating (a number)
         """
-        self.__name = name
+        self.customer = customer
+        self.restaurant = restaurant
+        self.rating = rating
 
-    def name(self):
-        return self.__name
+        Review.__add_reviev(self)
+
+    def rating(self):
+        return self.rating
+    
+    @classmethod
+    def all(cls):
+        return cls.reviews
+    
+    @classmethod
+    def __add_reviev(cls, review):
+        cls.reviews.append(review)
