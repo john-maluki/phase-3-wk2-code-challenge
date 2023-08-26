@@ -27,3 +27,16 @@ class Restaurant:
         ]
         return unique_customers
     
+    def average_star_rating(self):
+        """
+            returns the average star rating for a restaurant based on its reviews
+            Reminder: you can calculate the average by adding up all the ratings 
+            and dividing by the number of ratings
+        """
+        restaurant_reviews = self.reviews()
+        average = sum(
+            [review.rating for review in restaurant_reviews]
+        ) / len(restaurant_reviews)
+        return average
+
+    
