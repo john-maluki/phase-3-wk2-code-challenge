@@ -1,5 +1,5 @@
 class Customer:
-    all = []
+    customers = []
     def __init__(self, first_name, last_name):
         """
             Initialized customer with a given name (first_name) 
@@ -31,5 +31,9 @@ class Customer:
     @classmethod
     def add_customer(cls, customer):
         cls.all.append(customer)
+
+    @classmethod
+    def all(cls):
+        return cls.customers
 
     
