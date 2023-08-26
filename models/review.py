@@ -4,14 +4,20 @@ class Review:
         """
         initializes customer, restaurant, and a rating (a number)
         """
-        self.customer = customer
-        self.restaurant = restaurant
+        self.__customer = customer
+        self.__restaurant = restaurant
         self.rating = rating
 
         Review.__add_reviev(self)
 
     def rating(self):
         return self.rating
+    
+    def customer(self):
+        return self.__customer
+    
+    def restaurant(self):
+        return self.__restaurant
     
     @classmethod
     def all(cls):
