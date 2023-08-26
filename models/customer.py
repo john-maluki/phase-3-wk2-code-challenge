@@ -93,6 +93,3 @@ class Customer:
                 found_customers.append(customer)
             
         return found_customers
-
-
-    

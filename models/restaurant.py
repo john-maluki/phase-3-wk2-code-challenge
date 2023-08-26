@@ -38,5 +38,3 @@ class Restaurant:
             [review.rating for review in restaurant_reviews]
         ) / len(restaurant_reviews)
         return average
-
-    
