@@ -1,4 +1,4 @@
-from review import Review
+from models.review import Review
 
 class Restaurant:
     def __init__(self, name):
@@ -14,17 +14,14 @@ class Restaurant:
         """
             Returns a list of all reviews for that restaurant
         """
-        return [review for review in Review.reviews if review.restaurant.name() == self.__name]
+        return [review for review in Review.reviews if review.restaurant().name() == self.__name]
     
     def customers(self):
         """
             Returns a **unique** list of all customers who have reviewed a particular restaurant
         """
-        unique_customer_names = set(
-            [review.customer.full_name() for review in self.reviews()])
-        unique_customers = [
-            review.customer for review in self.reviews if review.customer.full_name() in unique_customer_names
-        ]
+        unique_customers = set([review.customer() for review in self.reviews()])
+
         return unique_customers
     
     def average_star_rating(self):
@@ -35,6 +32,6 @@ class Restaurant:
         """
         restaurant_reviews = self.reviews()
         average = sum(
-            [review.rating for review in restaurant_reviews]
+            [review.rating() for review in restaurant_reviews]
         ) / len(restaurant_reviews)
         return average
