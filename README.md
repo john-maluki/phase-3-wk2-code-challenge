@@ -126,7 +126,7 @@ The following have been used on this project:
 ## Project Setup
 
 - Clone the repository: `git clone <repository-url>`
-- Navigate to cloned repository: `cd phase-3-wk1-code-challenge`
+- Navigate to cloned repository: `cd phase-3-wk2-code-challenge`
 - Create pipenv environment: `pipenv shell`
 - Install dependencies: ` pipenv install`
 - Run test using pytest: `pytest`
