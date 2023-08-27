@@ -6,12 +6,12 @@ class Review:
         """
         self.__customer = customer
         self.__restaurant = restaurant
-        self.rating = rating
+        self.__rating = rating
 
         Review.__add_reviev(self)
 
     def rating(self):
-        return self.rating
+        return self.__rating
     
     def customer(self):
         return self.__customer
