@@ -1,4 +1,4 @@
-from review import Review
+from .review import Review
 
 class Customer:
     customers = []
@@ -18,7 +18,7 @@ class Customer:
         """
         return self.first_name
     
-    def set_first_name(self, first_name):
+    def set_given_name(self, first_name):
         self.first_name = first_name
 
     def family_name(self):
@@ -34,10 +34,7 @@ class Customer:
         """
             Returns a **unique** list of all restaurants a customer has reviewed
         """
-        customer_reviews = self.__get_customer_reviews()
-        unique_restaurant_names = set([review.restaurant.name for review in customer_reviews])
-        unique_restaurant = [review.restaurant for review in customer_reviews if review.restaurant.name in unique_restaurant_names]
-        return unique_restaurant
+        return self.__get_unique_restaurant()
     
     def add_review(self, restaurant, rating):
         """
@@ -56,12 +53,26 @@ class Customer:
 
 
     def __get_customer_reviews(self):
-        customer_reviews = [review for review in Review.reviews if review.customer.full_name() == self.full_name()]
+        customer_reviews = [review for review in Review.reviews if review.customer().full_name() == self.full_name()]
         return customer_reviews
+    
+    def __get_unique_restaurant(self):
+        customer_reviews = self.__get_customer_reviews()
+        unique_restaurant_names = set([review.restaurant().name() for review in customer_reviews])
+        unique_restaurants = []
+        for name in unique_restaurant_names:
+            for review in customer_reviews:
+                restaurant_name = review.restaurant().name()
+                if restaurant_name == name:
+                    unique_restaurants.append(review.restaurant())
+                    break
+    
+        return unique_restaurants
+
 
     @classmethod
     def add_customer(cls, customer):
-        cls.all.append(customer)
+        cls.customers.append(customer)
 
     @classmethod
     def all(cls):
